@@ -21,5 +21,5 @@ Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
 
 Route::post("user-register", [ApiController::class, 'register']);
 Route::post("user-login", [ApiController::class, 'login']);
-Route::get("user-profile", [ApiController::class, 'profileData']);
+Route::post("user-profile", [ApiController::class, 'profileData']);
 Route::post("user-update-profile", [ApiController::class, 'updateProfile']);

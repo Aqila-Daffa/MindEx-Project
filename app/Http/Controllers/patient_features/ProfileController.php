@@ -20,6 +20,7 @@ class ProfileController extends Controller
 
     public function update(Request $request)
     {
+        //dd($request);
         $val = $request->validate([
             'fullname' => 'required|min:3|max:100',
             'address' => 'required|min:3|max:250',

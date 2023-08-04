@@ -14,7 +14,7 @@
 <body>
     <!-- ======= Header ======= -->
     <header id="header" class="fixed-top d-flex align-items-center header">
-        @include('patient-features.layout.header-user')
+        @include('client-features.layout.header-user')
     </header>
     <!-- End Header -->
 

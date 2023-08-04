@@ -19,7 +19,7 @@
             <div class="card-body">
             <div class="d-flex justify-content-between">
               <h5 class="card-title">List Data of Transaction</h5>
-              <form action="/search-transaction-list" method="post">
+              <form action="/search-transaction-list" method="get">
                 @csrf
                 <div class="input-group mt-3">
                   <input type="search" class="form-control rounded" name="search" placeholder="Put App ID, Pay Date" aria-label="Search" aria-describedby="search-addon" />

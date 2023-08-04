@@ -43,7 +43,7 @@
 
   <input type="hidden" name="id" value="{{ $payment->id }}">
     <div class="d-flex justify-content-center mx-4 my-2">
-      <button type="button" onclick="location.href='/update-payment-status'" class="btn btn-danger btn-lg me-3">Go Back</button>
+      <button type="button" onclick="location.href='/admin-transaction-list'" class="btn btn-danger btn-lg me-3">Go Back</button>
       <button type="submit" class="btn btn-info btn-lg">update Status</button>
     </div>
 

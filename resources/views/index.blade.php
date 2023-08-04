@@ -52,8 +52,8 @@
             <p>MindEx web applications can provide support and guidance to individuals experiencing anxiety, depression, or other mental health concerns. With the help of MindEx, you can connect with mental health professionals and receive therapy and counseling services remotely.</p>
 
             <div class="icon-box" data-aos="zoom-in" data-aos-delay="100">
-              <div class="icon"><a href="/mental-health"><i class="bi bi-clipboard2-pulse"></i></div>
-              <h4 class="title">Mental Health Test</a></h4>
+              <div class="icon"><a href="/cake-product"><i class="bi bi-clipboard2-pulse"></i></div>
+              <h4 class="title">Cake Product</a></h4>
               <p class="description">This MindEx will help you to track your mental health interpretation by filling the questions</p>
             </div>
 

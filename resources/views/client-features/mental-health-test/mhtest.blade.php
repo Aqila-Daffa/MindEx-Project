@@ -8,6 +8,19 @@
           <p>Mental Health Test Questions</p>
         </div>
 
+        <div class="mb-4" data-aos="fade-up">
+          <h3>Indicator for the scale</h3>
+          <h5 class="mt-3">0 = Strongly Disagree &emsp; 1 = Disagree &emsp; 2 = Agree &emsp; 3 = Strongly Agree</h5>
+        </div>
+
+        <!-- <div class="mb-5" data-aos="fade-up">
+          <h3>Indicator for the scale</h3>
+          <h5>0 &nbsp=&nbsp Strongly Disagree</h5> 
+          <h5>1 &nbsp&nbsp=&nbsp Disagree</h5>
+          <h5>2 &nbsp=&nbsp Agree</h5>
+          <h5>3 &nbsp=&nbsp Strongly Agree</h5>
+        </div> -->
+
         <form action="/mental-health-result" method="post">
           @csrf
         <div class="faq-list">

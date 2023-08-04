@@ -59,6 +59,7 @@
             <option value="Waiting for confirmation">Waiting for confirmation</option>
             <option value="Rejected">Rejected</option>
             <option value="Confirmed">Confirmed</option>
+            <option value="Pending">Pending</option>
             <option value="Payment Rejected">Payment Rejected</option>
             <option value="Payment Approved">Payment Approved</option>
           </select>

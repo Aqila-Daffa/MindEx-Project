@@ -19,7 +19,7 @@ class AdminController extends Controller
 
     // *** User ***
     public function userTable(){
-        $user = User::paginate(5);
+        $user = User::latest()->paginate(5);
 
         return view('admin/userlist', compact('user'));
     }
@@ -30,12 +30,12 @@ class AdminController extends Controller
                           ->orWhere('role', $userSearch)
                           ->orWhere("username", "like", '%' . $userSearch . '%')
                           ->orWhere("fullname", "like", '%' . $userSearch . '%')
-                          ->orWhere("email", "like", '%' . $userSearch . '%')->paginate(5);
+                          ->orWhere("email", "like", '%' . $userSearch . '%')->latest()->paginate(5);
 
         if($user->count() > 0){
             return view('admin/userlist', compact('user'));
         }else {
-            $user = User::paginate(5);
+            $user = User::latest()->paginate(5);
             return view('admin/userlist', compact('user'));
         }
     }
@@ -91,34 +91,48 @@ class AdminController extends Controller
         //dd($id);
         $userId = $id;
         $user = User::findorfail($userId);
+        $appId = [];
         
+        $app = Appointment::where('user_id_patient', $userId)->orWhere('user_id_psychologist', $userId)->get();
+
+        foreach($app as $apps){
+            array_push($appId, $apps->id);
+        }
+        
+        $payment = Payment::where('appointment_id', $appId)->get();
+        $payment->each->delete();
+        $app->each->delete();
+
         $mentalH = MentalHealth::where('user_id', $userId)->get();
-        $mentalH->each->delete();
+        if ($mentalH->count() > 0) {
+            $mentalH->each->delete();
+        }
+
         $user->delete();
         return redirect("/admin-user-list")->with('success', 'User was deleted!');
     }
 
     // *** Mental Health Test ***
     public function mhTable(){
-        $mh = MentalHealth::paginate(5);
+        $mh = MentalHealth::latest()->paginate(5);
         return view('admin/mentalHealthList', compact('mh'));
     }
 
     public function mhSearch(Request $request){
         $usID = $request->search;
-        $mh = MentalHealth::where('user_id', $usID)->paginate(5);
+        $mh = MentalHealth::where('user_id', $usID)->latest()->paginate(5);
 
         if($mh->count() > 0){
             return view('admin/mentalHealthList', compact('mh'));
         }else {
-            $mh = MentalHealth::paginate(5);
+            $mh = MentalHealth::latest()->paginate(5);
             return view('admin/mentalHealthList', compact('mh'));
         }
     }
 
     // *** Appointment ***
     public function appTable(){
-        $app = Appointment::paginate(5);
+        $app = Appointment::latest()->paginate(5);
         return view('admin/appointmentList', compact('app'));
     }
 
@@ -126,12 +140,12 @@ class AdminController extends Controller
         $search = $request->search;
         $app = Appointment::where('id', $search)
                                 ->orWhere('appointmentDate', $search)
-                                ->orWhere('appointmentStatus', $search)->paginate(5);
+                                ->orWhere('appointmentStatus', $search)->latest()->paginate(5);
 
         if($app->count() > 0){
             return view('admin/appointmentList', compact('app'));
         }else {
-            $app = Appointment::paginate(5);
+            $app = Appointment::latest()->paginate(5);
             return view('admin/appointmentList', compact('app'));
         }
     }
@@ -161,7 +175,7 @@ class AdminController extends Controller
 
     // *** Payment ***
     public function transTable(){
-        $trans = Payment::paginate(5);
+        $trans = Payment::latest()->paginate(5);
         return view('admin/paymentList', compact('trans'));
     }
 
@@ -183,12 +197,12 @@ class AdminController extends Controller
         $search = $request->search;
         $trans = Payment::where('appointment_id', $search)
                         ->orWhere('paymentDate', $search)
-                        ->orWhere('paymentStatus', $search)->paginate(5);
+                        ->orWhere('paymentStatus', $search)->latest()->paginate(5);
 
         if($trans->count() > 0){
             return view('admin/paymentList', compact('trans'));
         }else {
-            $trans = Payment::paginate(5);
+            $trans = Payment::latest()->paginate(5);
             return view('admin/paymentList', compact('trans'));
         }
     }

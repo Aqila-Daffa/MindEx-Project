@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Document</title>
+    <title>Mindex | Sign Up</title>
     <meta content="" name="description">
     <meta content="" name="keywords">
     @include('layouts.link')
@@ -52,8 +52,13 @@
                   <div class="d-flex flex-row align-items-center mb-4">
                     <i class="fas fa-lock fa-lg me-3 fa-fw"></i>
                     <div class="form-floating flex-fill mb-0">
-                      <input type="password" id="password" name="password" class="form-control @error('password') is-invalid @enderror" placeholder="password" />
+                      <input type="password" id="password" name="password" class="form-control @error('password') is-invalid @enderror" pattern="(?=.*\d)(?=.*[a-z])(?=.*[A-Z]).{8,}" title="Must contain at least one number and one uppercase and lowercase letter, and at least 8 or more characters" placeholder="password" />
                       <label class="form-label" for="password">Password</label>
+                      <p class="form-check mt-2">
+                        <input type="checkbox" class="form-check-input" onclick="showPass()"> 
+                        <label class="form-check-label" for="flexCheckDefault">
+                        Show Password
+                      </p>
                       @error('password')
                       <div class="invalid-feedback">
                         {{$message}}
@@ -75,7 +80,7 @@
                     </div>
                   </div>
 
-                  <div class="form-check d-flex justify-content-center mb-5">
+                  <div class="form-check d-flex justify-content-center mb-3">
                     <p>Click <a href="/login" style="color:blue;">HERE</a> if you already have an account</p>
                   </div>
 
@@ -100,5 +105,29 @@
     </div>
   </div>
 </section>
+<script>
+    var password = document.getElementById("password")
+    var confirm_password = document.getElementById("confirm_password");
+
+    function validatePassword(){
+        if(password.value != confirm_password.value) {
+            confirm_password.setCustomValidity("Passwords Don't Match");
+        } else {
+            confirm_password.setCustomValidity('');
+        }
+    }
+
+    password.onchange = validatePassword;
+    confirm_password.onkeyup = validatePassword;
+
+    function showPass() {
+        var x = document.getElementById("password");
+        if (x.type === "password") {
+          x.type = "text";
+        } else {
+          x.type = "password";
+        }
+    }
+</script>
 </body>
 </html>

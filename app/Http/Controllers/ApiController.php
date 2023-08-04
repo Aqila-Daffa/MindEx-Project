@@ -17,10 +17,7 @@ class ApiController extends Controller
             'password' => 'required|min:6|max:255',
         ]);
         
-        $val['password'] = Hash::make($val['password']);
-
-        User::create($val);
-        
+        User::create($val);        
         return response('User register successfully.');
     }
 
@@ -32,31 +29,36 @@ class ApiController extends Controller
         ]);
         
         if (Auth::attempt($cred)) {
-            $request->session()->regenerate();
-            return response('User Login Successful!');
+            $user=User::where('email', $cred['email'])->get();
+            return response($user);
         }else{
             return response('Login Failed, Please try again!');
         }  
     }
 
-    public function profileData(){
-        $userId = auth()->user()->id;
-        $user = User::where("id", $userId)->get();
+    public function profileData(Request $request){
+        $val = $request->validate([
+            'email' => 'required|email:dns',
+        ]);
+        $user = User::where("email", $val['email'])->get();
         return response($user);
     }
 
     public function updateProfile(Request $request)
     {
         $val = $request->validate([
+            'username' => 'required|min:3|max:100|unique:users',
             'fullname' => 'required|min:3|max:100',
             'address' => 'required|min:3|max:250',
             'phone' => 'required|numeric',
             'birthdate' => 'required|min:3|max:100',
         ]);
         
-        $userId = auth()->user()->id;
-        $userUpdt = User::findorfail($userId);
+        $userName = $val['username'];
+        $userUpdt = User::findorfail($userName);
         $userUpdt->update($val);
-        return response('Profile Updated Successfully');
+
+        $user = User::where("email", $val['username'])->get();
+        return response($user);
     }
 }

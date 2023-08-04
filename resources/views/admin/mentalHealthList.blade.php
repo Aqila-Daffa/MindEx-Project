@@ -21,7 +21,7 @@
               <div class="d-flex justify-content-between">
               <h5 class="card-title">List Data of Mental Health Test</h5>
 
-              <form action="/admin-mental-health-search" method="post">
+              <form action="/admin-mental-health-search" method="get">
                 @csrf
                 <div class="input-group mt-3">
                   <input type="search" class="form-control rounded" name="search" placeholder="Search by User ID" aria-label="Search" aria-describedby="search-addon" value="{{ request('search') }}" />

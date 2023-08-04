@@ -19,12 +19,12 @@ class PsychologistController extends Controller
 
     public function checkAppSchedule(){
         $user = auth()->user()->id;
-        $appGet = Appointment::with('patient')->where('user_id_psychologist', $user)->get();
+        $appGet = Appointment::with('patient')->where('user_id_psychologist', $user)->latest()->get();
 
         if($appGet->count() < 1){
             return back()->with('warning', "There is no appointment for you!");
         }else{
-            $app = Appointment::with('patient')->where('user_id_psychologist', $user)->paginate(3);
+            $app = Appointment::with('patient')->where('user_id_psychologist', $user)->latest()->paginate(3);
             return view('psychologist-features/appointmentSchedule', compact('app'));
         }
     }
@@ -56,8 +56,8 @@ class PsychologistController extends Controller
         $user = auth()->user()->id;
 
         if($appStatus !== "null" && $appDate !== null){
-            $appGet = Appointment::with('patient')->where('user_id_psychologist', $user)->where('appointmentStatus', $appStatus)->where('appointmentDate', $appDate)->get();
-            $app = Appointment::with('patient')->where('user_id_psychologist', $user)->where('appointmentStatus', $appStatus)->where('appointmentDate', $appDate)->paginate(3);
+            $appGet = Appointment::with('patient')->where('user_id_psychologist', $user)->where('appointmentStatus', $appStatus)->where('appointmentDate', $appDate)->latest()->get();
+            $app = Appointment::with('patient')->where('user_id_psychologist', $user)->where('appointmentStatus', $appStatus)->where('appointmentDate', $appDate)->latest()->paginate(3);
 
             if($appGet->count() > 0){
                 return view('psychologist-features/appointmentSchedule', compact('app'));
@@ -65,8 +65,8 @@ class PsychologistController extends Controller
                 return redirect("/psychologist-schedule")->with('error', 'The filtered data is not found');
             }
         }else if($appStatus !== "null" && $appDate === null){
-            $appGet = Appointment::with('patient')->where('user_id_psychologist', $user)->where('appointmentStatus', $appStatus)->get();
-            $app = Appointment::with('patient')->where('user_id_psychologist', $user)->where('appointmentStatus', $appStatus)->paginate(3);
+            $appGet = Appointment::with('patient')->where('user_id_psychologist', $user)->where('appointmentStatus', $appStatus)->latest()->get();
+            $app = Appointment::with('patient')->where('user_id_psychologist', $user)->where('appointmentStatus', $appStatus)->latest()->paginate(3);
 
             if($appGet->count() > 0){
                 return view('psychologist-features/appointmentSchedule', compact('app'));
@@ -74,8 +74,8 @@ class PsychologistController extends Controller
                 return redirect("/psychologist-schedule")->with('error', 'The filtered data with the specific status is not found');
             }
         }else if($appStatus === "null" && $appDate !== null){
-            $appGet = Appointment::with('patient')->where('user_id_psychologist', $user)->where('appointmentDate', $appDate)->get();
-            $app = Appointment::with('patient')->where('user_id_psychologist', $user)->where('appointmentDate', $appDate)->paginate(3);
+            $appGet = Appointment::with('patient')->where('user_id_psychologist', $user)->where('appointmentDate', $appDate)->latest()->get();
+            $app = Appointment::with('patient')->where('user_id_psychologist', $user)->where('appointmentDate', $appDate)->latest()->paginate(3);
 
             if($appGet->count() > 0){
                 return view('psychologist-features/appointmentSchedule', compact('app'));

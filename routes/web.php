@@ -10,6 +10,7 @@ use App\Http\Controllers\patient_features\MentalHealthController;
 use App\Http\Controllers\patient_features\ConsultationController;
 use App\Http\Controllers\PaymentController;
 use App\Http\Controllers\ChatBotController;
+use App\Http\Controllers\ProductController;
 use App\Http\Controllers\Controller;
 
 /*
@@ -32,6 +33,9 @@ Route::get('/', [Controller::class, 'index']);
 // ***** Authentication Function *****
 
 Route::get('/login', [LoginController::class, 'index'])->name('login')->middleware('guest');
+Route::get('/forget-password', [LoginController::class, 'forgotPassPage'])->middleware('guest');
+Route::post('/checkAcc', [LoginController::class, 'checkAcc']);
+Route::post('/resetPassword', [LoginController::class, 'resetPass']);
 Route::post('/signin', [LoginController::class, 'loginAuth']);
 Route::post('/logout', [LoginController::class, 'logout']);
 
@@ -47,9 +51,9 @@ Route::get('/profile', [ProfileController::class, 'index'])->middleware('auth');
 Route::get('/update-profile', [ProfileController::class, 'updPrflPage'])->middleware('auth');
 Route::post('/updateProfile', [ProfileController::class, 'update']);
 
-// ***** Mental Health Feature *****
-Route::get('/mental-health', [MentalHealthController::class, 'index'])->middleware('auth');
-Route::get('/mental-health-test', [MentalHealthController::class, 'mhtest'])->middleware('auth');
+// ***** Product Feature *****
+Route::get('/cake-product', [ProductController::class, 'index'])->middleware('auth');
+Route::get('/product-detail', [ProductController::class, 'prodDetail'])->middleware('auth');
 Route::post('/mental-health-result', [MentalHealthController::class, 'result'])->middleware('auth');
 Route::get('/mental-health-status', [MentalHealthController::class, 'mhstatus'])->middleware('auth');
 
@@ -82,11 +86,11 @@ Route::match(['get', 'post'], 'botman', [ChatBotController::class, 'handle'])->m
 Route::get('/admin-dashboard', [AdminController::class, 'index'])->middleware('admin');
 
 Route::get('/admin-user-list', [AdminController::class, 'userTable'])->middleware('admin');
-Route::post('/admin-user-search', [AdminController::class, 'userSearch'])->middleware('admin');
+Route::get('/admin-user-search', [AdminController::class, 'userSearch'])->middleware('admin');
 Route::get('/deleteUser/{id}', [AdminController::class, 'deleteUser'])->middleware('admin');
 
 Route::get('/admin-mental-health-list', [AdminController::class, 'mhTable'])->middleware('admin');
-Route::post('/admin-mental-health-search', [AdminController::class, 'mhSearch'])->middleware('admin');
+Route::get('/admin-mental-health-search', [AdminController::class, 'mhSearch'])->middleware('admin');
 
 Route::get('/admin-add-psychologist', [AdminController::class, 'addPsyc'])->middleware('admin');
 Route::post('/createPsycho', [AdminController::class, 'createPsycho'])->middleware('admin');
@@ -97,14 +101,14 @@ Route::post('/createAdmin', [AdminController::class, 'createAdmin'])->middleware
 
 Route::get('/edit-link/{id}', [AdminController::class, 'editLink'])->middleware('admin');
 Route::get('/admin-appointment-list', [AdminController::class, 'appTable'])->middleware('admin');
-Route::post('/admin-appointment-data', [AdminController::class, 'appSearch'])->middleware('admin');
+Route::get('/admin-appointment-data', [AdminController::class, 'appSearch'])->middleware('admin');
 Route::post('/updateLink', [AdminController::class, 'updateLink'])->middleware('admin');
 
 Route::get('/edit-payment-link/{id}', [AdminController::class, 'editLinkPay'])->middleware('admin');
 Route::get('/deletePayment/{id}', [AdminController::class, 'deletePayment'])->middleware('admin');
 Route::get('/admin-transaction-list', [AdminController::class, 'transTable'])->middleware('admin');
 Route::post('/update-payment-status', [AdminController::class, 'updateLinkPay'])->middleware('admin');
-Route::post('/search-transaction-list', [AdminController::class, 'tranSearch'])->middleware('admin');
+Route::get('/search-transaction-list', [AdminController::class, 'tranSearch'])->middleware('admin');
 
 // *************************
 

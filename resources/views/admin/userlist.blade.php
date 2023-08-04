@@ -21,7 +21,7 @@
               <div class="d-flex justify-content-between">
               <h5 class="card-title">List Data of Users</h5>
 
-              <form action="/admin-user-search" method="post">
+              <form action="/admin-user-search" method="get">
                 @csrf
                 <div class="input-group mt-3">
                   <input type="search" class="form-control rounded" name="search" placeholder="Search" aria-label="Search" aria-describedby="search-addon" value="{{ request('search') }}" />
@@ -35,6 +35,7 @@
                 <thead>
                   <tr>
                     <th scope="col">#</th>
+                    <th scope="col">ID</th>
                     <th scope="col">Name</th>
                     <th scope="col">Email</th>
                     <th scope="col">Role</th>
@@ -56,6 +57,7 @@
                 </script>
                   <tr>
                     <th scope="row">{{ $index }}</th>
+                    <td>{{ $users->id }}</td>
                     <td>{{ $users->username }}</td>
                     <td>{{ $users->email }}</td>
                     <td>{{ $users->role }}</td>

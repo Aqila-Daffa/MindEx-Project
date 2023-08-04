@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Mindex | Sign In</title>
+    <title>Mindex | Forget Password</title>
     <meta content="" name="description">
     <meta content="" name="keywords">
     @include('layouts.link')
@@ -9,9 +9,9 @@
 <body style="background-color: #eee;">
 <section>
   <div class="container h-100">
-            @if(session()->has('logError'))
+            @if(session()->has('checkError'))
               <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                <strong>{{ session('logError') }}</strong>
+                <strong>{{ session('checkError') }}</strong>
               </div>
             @endif
     <div class="row d-flex justify-content-center align-items-center h-100">
@@ -23,43 +23,40 @@
               <div class="d-flex justify-content-center">
               <img src="assets/img/logo.png" alt="" class="img-fluid" width="100px" height="100px">
               </div>
-                <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Sign In</p>
+                <p class="text-center h1 fw-bold mb-5 mx-1 mx-md-4 mt-4">Forget Password</p>
 
-                <form method="post" action="/signin">
+                <form method="post" action="/checkAcc">
                   @csrf
 
                   <div class="d-flex flex-row align-items-center mb-4">
                     <i class="fas fa-envelope fa-lg me-3 fa-fw"></i>
                     <div class="form-floating flex-fill mb-0">
-                      <input type="email" id="email" name="email" class="form-control" placeholder="email" />
-                      <label class="form-label" for="email">Your Email</label>
+                      <input type="email" id="email" name="email" class="form-control" placeholder="email" required/>
+                      <label class="form-label @error('email') is-invalid @enderror" for="email">Your Email</label>
+                      @error('email')
+                      <div class="invalid-feedback">
+                        {{$message}}
+                      </div>
+                      @enderror
                     </div>
                   </div>
 
                   <div class="d-flex flex-row align-items-center mb-4">
                     <i class="fas fa-lock fa-lg me-3 fa-fw"></i>
                     <div class="form-floating flex-fill mb-0">
-                      <input type="password" id="password" name="password" class="form-control" placeholder="password" />
-                      <label class="form-label" for="password">Password</label>
-                      <p class="form-check mt-2">
-                        <input type="checkbox" class="form-check-input" onclick="showPass()"> 
-                        <label class="form-check-label" for="flexCheckDefault">
-                        Show Password
-                      </p>
+                      <input type="text" id="phone" name="phone" class="form-control" placeholder="phone" required/>
+                      <label class="form-label @error('phone') is-invalid @enderror" for="phone">Your Phone</label>
+                      @error('phone')
+                      <div class="invalid-feedback">
+                        {{$message}}
+                      </div>
+                      @enderror
                     </div>
                   </div>
 
-                  <div class="d-flex justify-content-center mb-1">
-                  <p><a href="/forget-password" style="color:blue;">Forgot Password?</a></p>
-                  </div>
-
-                  <div class="form-check d-flex justify-content-center mb-4">
-                    <p>Click <a href="/register" style="color:blue;">HERE</a> if you don't have an account yet</p>
-                  </div>
-
                   <div class="d-flex justify-content-center mx-4 mb-3 mb-lg-4">
-                    <button type="button" onclick="location.href='/'" class="btn btn-primary btn-lg me-3">Home</button>
-                    <button type="submit" class="btn btn-primary btn-lg">Login</button>
+                    <button type="button" onclick="location.href='/login'" class="btn btn-primary btn-lg me-3">Back</button>
+                    <button type="submit" class="btn btn-primary btn-lg">Confirm Account</button>
                   </div>
 
                 </form>
@@ -79,15 +76,5 @@
   </div>
 </section>
 @include('sweetalert::alert')
-<script>
-  function showPass() {
-    var x = document.getElementById("password");
-    if (x.type === "password") {
-      x.type = "text";
-    } else {
-      x.type = "password";
-    }
-  }
-</script>
 </body>
 </html>

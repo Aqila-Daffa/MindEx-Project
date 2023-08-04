@@ -42,7 +42,7 @@
                 </div>
                 <div class="form-floating mb-3">
                     <input type="text" class="form-control @error('phone') is-invalid @enderror" name="phone" id="phone" placeholder="phone" value="{{ old('phone') }}" required>
-                    <label for="address">Phone Number</label>
+                    <label for="phone">Phone Number</label>
                     @error('phone')
                     <div class="invalid-feedback">
                         {{$message}}
@@ -51,7 +51,7 @@
                 </div>
                 <div class="form-floating mb-3">
                     <input type="date" class="form-control @error('birthdate') is-invalid @enderror" name="birthdate" id="birthdate" placeholder="birthdate" min="1965-01-01" max="2010-01-01" required>
-                    <label for="address">Birth Date</label>
+                    <label for="date">Birth Date</label>
                     @error('birthdate')
                     <div class="invalid-feedback">
                         {{$message}}
