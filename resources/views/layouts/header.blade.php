@@ -1,12 +1,15 @@
 <div class="container d-flex align-items-center justify-content-between">
       <div class="logo">
-        <a href="/"><img src="assets/img/mindex.png" alt="" class="img-fluid"></a>
+        <a href="/" class="d-flex justify-content-between">
+          <img src="assets/img/logo.png" alt="" class="img-fluid">
+          <h4 class="ms-2 mt-1" style="color: white;">Vi's Baking</h4>
+        </a>
       </div>
 
       <nav id="navbar" class="navbar">
         <ul>
-          <li><a class="nav-link scrollto active" href="#hero">Home</a></li>
-          <li><a class="nav-link scrollto" href="#about">About</a></li>
+          <li><a class="nav-link active" href="#hero">Home</a></li>
+          <li><a class="nav-link" href="#about">About</a></li>
           <li class="dropdown"><a href="#"><span>Contacts</span> <i class="bi bi-chevron-down"></i></a>
             <ul>
               <li><a target="_blank" href="#">Whatsapp</a></li>

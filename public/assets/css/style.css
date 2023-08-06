@@ -15,12 +15,12 @@ body {
 }
 
 a {
-    color: #3c225f;
+    color: #5f2246;
     text-decoration: none;
 }
 
 a:hover {
-    color: #957eb4;
+    color: #b47e93;
     text-decoration: none;
 }
 
@@ -120,7 +120,7 @@ h6 {
     transition: all 0.5s;
     z-index: 997;
     transition: all 0.5s;
-    background: #00142d;
+    background: #380f0f;
 }
 
 #header.header-transparent {
@@ -128,7 +128,7 @@ h6 {
 }
 
 #header.header-scrolled {
-    background: #00142dd3;
+    background: #750000ad;
     height: 60px;
 }
 
@@ -336,7 +336,7 @@ h6 {
     right: 0;
     left: 0;
     bottom: 0;
-    background: rgba(1, 3, 91, 0.9);
+    background: rgba(91, 1, 28, 0.9);
     transition: 0.3s;
     z-index: 999;
 }
@@ -369,13 +369,13 @@ h6 {
 .navbar-mobile a:focus {
     padding: 10px 20px;
     font-size: 15px;
-    color: #0205a1;
+    color: #550012;
 }
 
 .navbar-mobile a:hover,
 .navbar-mobile .active,
 .navbar-mobile li:hover > a {
-    color: #3f43fd;
+    color: #fd3f78;
 }
 
 .navbar-mobile .getstarted,
@@ -393,7 +393,7 @@ h6 {
     opacity: 1;
     visibility: visible;
     background: #fff;
-    box-shadow: 0px 0px 30px rgba(127, 137, 161, 0.25);
+    box-shadow: 0px 0px 30px rgba(145, 66, 89, 0.438);
 }
 
 .navbar-mobile .dropdown ul li,
@@ -436,7 +436,7 @@ h6 {
 
 #hero:before {
     content: "";
-    background: #00142cf8;
+    background: #2e0202;
     position: absolute;
     bottom: 0;
     top: 0;
@@ -453,7 +453,7 @@ h6 {
 }
 
 #hero h1 span {
-    color: #fff;
+    color: #fceded;
     border-bottom: 4px solid #1acc8d;
 }
 
@@ -465,7 +465,7 @@ h6 {
 
 #hero .btn-get-started {
     font-family: "Montserrat", sans-serif;
-    font-weight: 500;
+    font-weight: 600;
     font-size: 16px;
     letter-spacing: 1px;
     display: inline-block;
@@ -473,16 +473,16 @@ h6 {
     border-radius: 50px;
     transition: 0.5s;
     color: #000000;
-    background: #16daec;
+    background: #9b837d;
 }
 
 #hero .btn-get-started:hover {
-    background: #0d6f9d;
+    background: #7c0939;
     color: #ffffff;
 }
 
 #hero .animated {
-    animation: up-down 2s ease-in-out infinite alternate-reverse both;
+    animation: up-down 5s ease-in-out infinite alternate-reverse both;
 }
 
 @media (min-width: 1024px) {
@@ -537,60 +537,6 @@ h6 {
     }
 }
 
-.hero-waves {
-    display: block;
-    margin-top: 60px;
-    width: 100%;
-    height: 60px;
-    z-index: 5;
-    position: relative;
-}
-
-.wave1 use {
-    animation: move-forever1 10s linear infinite;
-    animation-delay: -2s;
-}
-
-.wave2 use {
-    animation: move-forever2 8s linear infinite;
-    animation-delay: -2s;
-}
-
-.wave3 use {
-    animation: move-forever3 6s linear infinite;
-    animation-delay: -2s;
-}
-
-@keyframes move-forever1 {
-    0% {
-        transform: translate(85px, 0%);
-    }
-
-    100% {
-        transform: translate(-90px, 0%);
-    }
-}
-
-@keyframes move-forever2 {
-    0% {
-        transform: translate(-90px, 0%);
-    }
-
-    100% {
-        transform: translate(85px, 0%);
-    }
-}
-
-@keyframes move-forever3 {
-    0% {
-        transform: translate(-90px, 0%);
-    }
-
-    100% {
-        transform: translate(85px, 0%);
-    }
-}
-
 /*--------------------------------------------------------------
 # Sections General
 --------------------------------------------------------------*/
@@ -600,7 +546,7 @@ section {
 }
 
 .section-bg {
-    background-color: #f5f5ff;
+    background-color: #e4e4e4;
 }
 
 .section-title {
@@ -639,68 +585,6 @@ section {
 }
 
 /*--------------------------------------------------------------
-# Breadcrumbs
---------------------------------------------------------------*/
-.breadcrumbs {
-    padding: 20px 0;
-    background-color: #fafaff;
-    min-height: 40px;
-    margin-top: 80px;
-}
-
-@media (max-width: 992px) {
-    .breadcrumbs {
-        margin-top: 64px;
-    }
-}
-
-.breadcrumbs h2 {
-    font-size: 24px;
-    font-weight: 400;
-    margin: 0;
-}
-
-@media (max-width: 992px) {
-    .breadcrumbs h2 {
-        margin: 0 0 10px 0;
-    }
-}
-
-.breadcrumbs ol {
-    display: flex;
-    flex-wrap: wrap;
-    list-style: none;
-    padding: 0;
-    margin: 0;
-    font-size: 14px;
-}
-
-.breadcrumbs ol li + li {
-    padding-left: 10px;
-}
-
-.breadcrumbs ol li + li::before {
-    display: inline-block;
-    padding-right: 10px;
-    color: #6c757d;
-    content: "/";
-}
-
-@media (max-width: 768px) {
-    .breadcrumbs .d-flex {
-        display: block !important;
-    }
-
-    .breadcrumbs ol {
-        display: block;
-    }
-
-    .breadcrumbs ol li {
-        display: inline-block;
-    }
-}
-
-/*--------------------------------------------------------------
 # About
 --------------------------------------------------------------*/
 .about {
@@ -710,7 +594,7 @@ section {
 .about .icon-boxes h3 {
     font-size: 28px;
     font-weight: 700;
-    color: #010483;
+    color: #641838;
     margin-bottom: 15px;
 }
 
@@ -725,21 +609,21 @@ section {
     justify-content: center;
     width: 64px;
     height: 64px;
-    border: 2px solid #3a1a58;
+    border: 2px solid #581a34;
     cursor: pointer;
     border-radius: 50px;
     transition: 0.5s;
 }
 
 .about .icon-box .icon i {
-    color: #3a1a58;
+    color: #581a34;
     cursor: pointer;
     font-size: 32px;
 }
 
 .about .icon-box:hover .icon {
-    background: #3d1761;
-    border-color: #351752;
+    background: #581a34;
+    border-color: #6b2241;
 }
 
 .about .icon-box:hover .icon i {
@@ -754,12 +638,12 @@ section {
 }
 
 .about .icon-box .title a {
-    color: #3a1a58;
+    color: #581a34;
     transition: 0.3s;
 }
 
 .about .icon-box .title a:hover {
-    color: #6c2ca8;
+    color: #743021;
 }
 
 .about .icon-box .description {
@@ -857,7 +741,7 @@ section {
 # Counts
 --------------------------------------------------------------*/
 .counts {
-    background: #1a10466b;
+    background: #c1aba6;
     padding: 70px 0 60px;
 }
 
@@ -875,7 +759,7 @@ section {
     left: 50%;
     transform: translateX(-50%);
     font-size: 20px;
-    background: #00142d;
+    background: #5a002a;
     padding: 12px;
     color: #fff;
     border-radius: 50px;
@@ -891,7 +775,7 @@ section {
     font-size: 36px;
     display: block;
     font-weight: 600;
-    color: #010483;
+    color: #5a002a;
 }
 
 .counts .count-box p {
