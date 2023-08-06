@@ -7,8 +7,8 @@
       <div class="row justify-content-between">
         <div class="col-lg-7 pt-5 pt-lg-0 order-2 order-lg-1 d-flex align-items-center">
           <div data-aos="zoom-out">
-            <h1>Order Your Favorite Cake in <span>Vi's Baking Store</span></h1>
-            <h2>We serve you some cakes for your special celebration or simply only if you want to satisfy your sweet tooth, CakeCrave brings a delightful assortment of cakes right to your fingertips.</h2>
+            <h1>Order Your Favorite Cake in <span>Vi's Baking</span></h1>
+            <h2>We serve you some cakes for your special celebration or simply to satisfy your sweet tooth, we bring a delightful assortment of cakes right to your fingertips.</h2>
             <div class="text-center text-lg-start">
               <a href="#about" class="btn-get-started mb-4">Get Started</a>
             </div>
